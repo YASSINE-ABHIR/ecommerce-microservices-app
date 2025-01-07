@@ -100,7 +100,7 @@ To start working with the E-commerce Microservices Application:
 ### Clone the Repository:
 
 ```bash
-git clone https://github.com/Dev7HD/e-com-Project_App
+git clone https://github.com/YASSINE-ABHIR/ecommerce-microservices-app
 cd e-com-Project_App
 ```
 
