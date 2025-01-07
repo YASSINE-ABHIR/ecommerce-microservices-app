@@ -180,9 +180,4 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer :
 2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalité`).
 3. Soumettez une Pull Request.
 
----
-
-## Licence
-
-Ce projet est sous licence [MIT](LICENSE).
 
