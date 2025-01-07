@@ -1,173 +1,188 @@
-# E-commerce Microservices Application
 
-This project is a modular E-Commerce application built using a microservices architecture. Each service is a standalone system implemented with Java (using Jakarta EE and Spring Data JPA) and managed independently. This architecture ensures scalability, maintainability, and ease of deployment.
+# Application E-commerce en Microservices
 
-## Table of Contents
+Ce projet est une application e-commerce modulaire construite en utilisant une architecture microservices. Chaque service est un système autonome développé en Java (avec Jakarta EE et Spring Data JPA) et géré indépendamment. Cette architecture garantit une meilleure scalabilité, maintenabilité et simplicité de déploiement.
 
-- [Project Overview](#project-overview)
-- [Modules and Features](#modules-and-features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [Running the Application](#running-the-application)
+## Table des Matières
+
+- [Vue d'ensemble du projet](#vue-densemble-du-projet)
+- [Modules et fonctionnalités](#modules-et-fonctionnalités)
+- [Technologies utilisées](#technologies-utilisées)
+- [Prise en main](#prise-en-main)
+- [Exécution de l'application](#exécution-de-lapplication)
 - [APIs](#apis)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contribution](#contribution)
+- [Licence](#licence)
 
-## Project Overview
+## Vue d'ensemble du projet
 
-The **E-commerce Microservices Application** includes multiple services to manage different aspects of an e-commerce platform, such as:
+L'**application e-commerce en microservices** comprend plusieurs services pour gérer différents aspects d'une plateforme e-commerce, notamment :
 
-- **Inventory Management**
-- **Order Processing**
-- **Gateway and API Routing**
-- **Centralized Configuration**
+- **Gestion des stocks**
+- **Traitement des commandes**
+- **Passerelle API et routage**
+- **Configuration centralisée**
 
-### Key Features:
+### Points forts :
 
-- Independent service deployment and scaling.
-- Secure interactions between services.
-- Swagger documentation for APIs.
-- Feign clients for inter-service communication.
+- Déploiement et mise à l'échelle indépendants des services.
+- Interactions sécurisées entre services.
+- Documentation des API avec Swagger.
+- Communication interservices via des clients Feign.
 
-## Modules and Features
+---
 
-The project consists of the following modules:
+## Modules et fonctionnalités
 
-### 1. **Config Service**
+Le projet est organisé en plusieurs modules :
 
-- Provides centralized configuration for all other microservices.
+### 1. **Service de Configuration**
 
-### 2. **Gateway Service**
+- Fournit une configuration centralisée pour tous les microservices.
 
-- Acts as the API gateway, routing all external requests to the appropriate microservices.
-- Handles security and authentication flows.
+### 2. **Service de Passerelle (Gateway)**
 
-### 3. **Inventory Service**
+- Agit comme une passerelle API, dirigeant les requêtes externes vers les microservices correspondants.
+- Gère la sécurité et les flux d'authentification.
 
-- Manages the inventory of products.
-- CRUD operations for product management.
-- Secure access with role-based authorization and token validation.
+### 3. **Service de Gestion des Stocks**
 
-### 4. **Order Service**
+- Gère l'inventaire des produits.
+- Opérations CRUD pour la gestion des produits.
+- Accès sécurisé avec une autorisation basée sur les rôles et la validation des jetons.
 
-- Manages customer orders and order-related entities (e.g., product items within orders).
-- Communicates with the Inventory Service using Feign clients for product availability checks.
+### 4. **Service des Commandes**
 
-## Technologies Used
+- Gère les commandes des clients ainsi que les entités associées (ex. : produits dans une commande).
+- Communique avec le Service de Gestion des Stocks via des clients Feign pour vérifier la disponibilité des produits.
 
-The project incorporates the following tools and technologies:
+---
 
-- **Backend Frameworks:**
+## Technologies utilisées
 
-  - Java 22 with **Jakarta EE** and **Spring Data JPA**
+### Frameworks Backend :
+- **Java 22** avec **Jakarta EE** et **Spring Data JPA**
 
-- **Security:**
+### Sécurité :
+- Keycloak pour l'authentification.
+- Sécurité basée sur des jetons JWT.
 
-  - Keycloak for authentication.
-  - JWT-based security.
+### Communication :
+- Clients Feign pour les appels entre services.
 
-- **Communication:**
+### Gestion des APIs :
+- Contrôleurs REST avec Spring Web.
+- Documentation API avec Swagger.
 
-  - Feign clients for inter-service calls.
+### Infrastructure Microservices :
+- Service de configuration centralisée.
+- Passerelle pour le routage unifié.
 
-- **API Management:**
+### Outils de Build :
+- Maven pour la gestion des dépendances et des builds.
 
-  - Spring Web and REST Controllers.
-  - Swagger for API documentation.
+### Bases de données :
+- **H2** (base de données en mémoire pour le développement local).
 
-- **Microservices Infrastructure:**
+---
 
-  - Config Service for centralized configuration.
-  - Gateway Service for unified routing.
+## Prise en main
 
-- **Build Tools:**
+### Prérequis :
 
-  - Maven for dependency management and builds.
+1. Installer le JDK (version 22 ou supérieure).
+2. Installer [Maven](https://maven.apache.org/).
+3. Lancer **Keycloak** si vous utilisez ses fonctionnalités d'authentification.
 
-- **Database:**
-  - Example: H2 as the in-memory database for local development.
-
-## Getting Started
-
-To start working with the E-commerce Microservices Application:
-
-### Prerequisites:
-
-1. Install Java Development Kit (JDK 22 or later).
-2. Install [Maven](https://maven.apache.org/).
-3. Ensure **Keycloak** is running if using its authentication features.
-
-### Clone the Repository:
+### Cloner le Repository :
 
 ```bash
-git clone https://github.com/YASSINE-ABHIR/ecommerce-microservices-app
-cd e-com-Project_App
+git clone https://github.com/YASSINE-ABHIR/ecommerce-microservices-app.git
+cd ecommerce-microservices-app
 ```
 
-### Build the Project:
+### Construire le Projet :
 
-Navigate into each service folder or the root where the `pom.xml` exists, then run:
+Dans le dossier racine où se trouve le fichier `pom.xml`, exécutez :
 
 ```bash
 mvn clean install
 ```
 
-### Configuration:
+### Configuration :
 
-Ensure that all `application.properties` files (in each service) are properly configured for your environment, such as database, Keycloak, or other dependencies.
+Vérifiez que les fichiers `application.properties` de chaque service sont correctement configurés pour votre environnement (base de données, Keycloak, etc.).
 
-## Running the Application
+---
 
-### Start the Config Service:
+## Exécution de l'application
 
-Navigate to the `config-service` directory and start the application:
+### Lancer le Service de Configuration :
 
+Dans le répertoire `config-service`, exécutez :
 ```bash
 mvn spring-boot:run
 ```
 
-### Start the Gateway Service:
+### Lancer le Service de Passerelle :
 
-Navigate to the `gateway-service` directory and start the application:
-
+Dans le répertoire `gateway-service`, exécutez :
 ```bash
 mvn spring-boot:run
 ```
 
-### Start the Inventory Service:
+### Lancer le Service de Gestion des Stocks :
 
-Navigate to the `inventory-service` directory and start the application:
-
+Dans le répertoire `inventory-service`, exécutez :
 ```bash
 mvn spring-boot:run
 ```
 
-### Start the Order Service:
+### Lancer le Service des Commandes :
 
-Navigate to the `order-service` directory and start the application:
-
+Dans le répertoire `order-service`, exécutez :
 ```bash
 mvn spring-boot:run
 ```
+
+---
 
 ## APIs
 
-### Swagger Documentation:
+### Documentation Swagger :
 
-Swagger is enabled in multiple services. Once started, Swagger UI can be accessed:
+Swagger est activé pour plusieurs services. Une fois démarré, l'interface Swagger est accessible via les URLs suivantes :
 
-- **Inventory Service Swagger:** `http://localhost:<port>/swagger-ui.html`
-- **Order Service Swagger:** `http://localhost:<port>/swagger-ui.html`
+- **Service de Gestion des Stocks :** `http://localhost:<port>/swagger-ui.html`
+- **Service des Commandes :** `http://localhost:<port>/swagger-ui.html`
 
-### Sample Endpoints:
+### Exemples d'Endpoints :
 
-- Inventory Service:
-  - `GET /api/products` - Get all products.
-  - `POST /api/products` - Add a new product.
-- Order Service:
-  - `GET /api/orders` - Get all orders.
-  - `POST /api/orders` - Place a new order.
+- **Service de Gestion des Stocks :**
+  - `GET /api/products` - Liste tous les produits.
+  - `POST /api/products` - Ajoute un nouveau produit.
 
-### Authentication:
+- **Service des Commandes :**
+  - `GET /api/orders` - Liste toutes les commandes.
+  - `POST /api/orders` - Crée une nouvelle commande.
 
-The services are secured using JWT tokens. You will need to obtain a valid token from Keycloak to access authenticated endpoints.
+### Authentification :
+
+Les services sont sécurisés avec des jetons JWT. Vous devez obtenir un jeton valide via Keycloak pour accéder aux endpoints protégés.
+
+---
+
+## Contribution
+
+Les contributions sont les bienvenues ! Si vous souhaitez contribuer :
+
+1. Forkez ce repository.
+2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalité`).
+3. Soumettez une Pull Request.
+
+---
+
+## Licence
+
+Ce projet est sous licence [MIT](LICENSE).
+
